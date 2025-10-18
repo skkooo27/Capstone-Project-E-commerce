@@ -65,3 +65,5 @@ Pipfile.lock
 *~
 TODO.md
 .DS_Store
+.env
+staticfiles

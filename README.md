@@ -125,17 +125,45 @@ You can use tools like Postman or curl to test the endpoints. Here's an example:
 
 ## Deployment
 
+### PythonAnywhere
+
+#### Prerequisites
+- PythonAnywhere account
+- Git repository with your code
+
+#### Steps
+
+1. **Clone your repository on PythonAnywhere:**
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
+   ```
+
+2. **Run the deployment script:**
+   ```bash
+   python deploy.py
+   ```
+
+3. **Configure the web app on PythonAnywhere:**
+   - Go to the **Web** tab
+   - Click **Add a new web app**
+   - Choose **Manual configuration** and select your Python version
+   - Set the source code directory to your project folder
+   - Set the WSGI configuration file to `ecommerce_api/wsgi.py`
+   - In the **Virtualenv** section, create a new virtualenv or use an existing one
+   - Add `/static/` to the static files section, pointing to your `staticfiles` directory
+   - Reload your web app
+
+4. **Update settings for production:**
+   - Edit `ecommerce_api/settings.py`
+   - Replace `'your-username.pythonanywhere.com'` with your actual PythonAnywhere domain
+   - Set a secure `SECRET_KEY`
+
 ### Heroku
 1. Create a Heroku app
 2. Set environment variables
 3. Push to Heroku git
 4. Run migrations on Heroku
-
-### PythonAnywhere
-1. Upload the project files
-2. Set up virtual environment
-3. Configure WSGI file
-4. Run the app
 
 ## Project Structure
 

@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from users.views import UserViewSet, register, LoginView
 from categories.views import CategoryViewSet
@@ -39,3 +41,6 @@ urlpatterns = [
     path('api/cart/remove/<int:product_id>/', remove_from_cart, name='remove_from_cart'),
     path('api/', include(router.urls)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
